@@ -1,0 +1,82 @@
+﻿@model ML.Coctel
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class=row>
+        <div class="text-center">
+            <h2>Cocteles</h2>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Ingrese el coctel que desea buscar</h5>
+            <hr />
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-12">
+    @using (Html.BeginForm("GetAll", "Coctel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+      
+        <div class="row">
+
+            <div class="col-md-3">
+
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.strDrink, new { @class = "form-control", @id = "txtNombre",@placeholder = "Nombre"})
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-circle-user"></i></span>
+                    @Html.TextBoxFor(model => model.Ingrediente, new { @class = "form-control", @id = "txtApellidoPaterno", @placeholder = "Ingrediente" })
+                </div>
+            </div>
+
+         
+        </div>
+        <br />
+        <div class="container">
+
+            <div class="col">
+                <input type="submit" value="Buscar" class="btn btn-info" />
+
+            </div>
+        </div>
+    }
+</div>
+<br />
+
+<div class="row">
+    @foreach (ML.Coctel coctel in Model.Cocteles)
+    {
+        <div class="col-md-3 mt-3 pt-3">
+            <div class="card text-white bg-dark border-success mb-3 bor" style="width: 18rem;">
+                <p class="card-text" style="text-align: center; vertical-align: middle;"><img id="Img" src="@coctel.strDrinkThumb" style="width:200px ; height:250px" /></p>
+                <h5 class="card-title" style="text-align: center; vertical-align: middle;">@coctel.strDrink </h5>
+                <p class="card-text" style="text-align: center; vertical-align: middle;">Ingredientes</p>
+                <p class="card-text" style="text-align: center; vertical-align: middle;">@coctel.strIngredient1 </p>
+                <p class="card-text" style="text-align: center; vertical-align: middle;">@coctel.strIngredient2 </p>
+                <p class="card-text" style="text-align: center; vertical-align: middle;">@coctel.strIngredient3 </p>
+                <p class="card-text" style="text-align: center; vertical-align: middle;">@coctel.strIngredient4</p>
+                <p class="card-text" style="text-align: center; vertical-align: middle;">@coctel.strIngredient5 </p>
+              
+            </div>
+        </div>
+
+    }
+</div>
