@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace ML
 {
@@ -67,5 +68,8 @@ namespace ML
         public string dateModified { get; set; }
 
         public List<Object> Cocteles { get; set; }
+
+        public string URL = "https://www.thecocktaildb.com/images/ingredients/";
+        public string extension = "-Small.png";
     }
 }
